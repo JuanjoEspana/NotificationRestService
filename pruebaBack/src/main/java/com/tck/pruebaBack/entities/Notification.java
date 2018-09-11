@@ -1,5 +1,7 @@
 package com.tck.pruebaBack.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,7 +10,7 @@ import java.util.Date;
 public class Notification {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column
     private int id;
 
@@ -19,6 +21,7 @@ public class Notification {
     private Long phone;
 
     @Column
+    @CreationTimestamp
     private Date created;
 
     @Column
@@ -92,5 +95,18 @@ public class Notification {
 
     public void setStatus(NotificationStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                ", phone=" + phone +
+                ", created=" + created +
+                ", serviceId=" + serviceId +
+                ", type=" + type +
+                ", status=" + status +
+                '}';
     }
 }

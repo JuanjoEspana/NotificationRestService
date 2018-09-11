@@ -44,13 +44,15 @@ public class CommunicationController {
         try {
             notification = commService.send(notification);
             notification.setStatus(NotificationStatus.OK);
+
+            return notification.toString();
         }catch(Exception e){
-            System.out.println("CommunicationController.sendSMS - Error while trying to send the notification: "
-                + e.getMessage());
+            String msg = "CommunicationController.sendSMS - Error while trying to send the notification: "
+                    + e.getMessage();
+            System.out.println(msg);
             e.printStackTrace();
+
+            return msg;
         }
-
-        return "Ok";
     }
-
 }
