@@ -13,6 +13,12 @@ public class Notification {
     private int id;
 
     @Column
+    private String message;
+
+    @Column
+    private Long phone;
+
+    @Column
     private Date created;
 
     @Column
@@ -24,12 +30,36 @@ public class Notification {
     @Column
     private NotificationStatus status;
 
+    public Notification(final Long phone, final String message, final Integer serviceId,
+                        final NotificationType type){
+        this.phone = phone;
+        this.message = message;
+        this.serviceId = serviceId;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Date getCreated() {
